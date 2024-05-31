@@ -6,7 +6,6 @@ import {
   fetchSimilar,
   fetchReviews,
 } from "../apis/fetchMovies";
-import { IMAGE_BASE_URL } from "../helpers/creds.env";
 import defaultImg from "./../assets/default-movie.webp";
 import {
   formatCurrencyUS,
@@ -19,6 +18,8 @@ import { useState } from "react";
 import { IoMdPlay } from "react-icons/io";
 import TrendingCard from "./../components/TrendingCard";
 import BriefReviews from "./BriefReviews";
+
+const VITE_IMAGE_BASE_URL = import.meta.env.VITE_IMAGE_BASE_URL;
 
 function MovieDetail() {
   const data = useLoaderData();
@@ -55,10 +56,10 @@ function MovieDetail() {
       : { job: ele.job, name: ele.original_name };
   }
   const posterPath = movie.poster_path
-    ? `${IMAGE_BASE_URL}/${movie.poster_path}`
+    ? `${VITE_IMAGE_BASE_URL}/${movie.poster_path}`
     : defaultImg;
   const backDropPath = movie.backdrop_path
-    ? `${IMAGE_BASE_URL}${movie.backdrop_path}`
+    ? `${VITE_IMAGE_BASE_URL}${movie.backdrop_path}`
     : defaultImg;
 
   function openModal() {

@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
-import { IMAGE_BASE_URL } from "../helpers/creds.env";
 import defaultImg from "./../assets/default-movie.webp";
 import Card from "./Card";
 import { formatDate } from "../helpers/formatFunctions";
 
+const VITE_IMAGE_BASE_URL = import.meta.env.VITE_IMAGE_BASE_URL;
+
 function TVShowCard({ show: { poster_path, name, first_air_date, id } }) {
   let posterImage = poster_path
-    ? `${IMAGE_BASE_URL}/${poster_path}`
+    ? `${VITE_IMAGE_BASE_URL}/${poster_path}`
     : defaultImg;
   return (
     <Card>

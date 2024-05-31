@@ -1,4 +1,5 @@
-import { BASE_URL, API_KEY } from "../helpers/creds.env";
+const VITE_API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+const VITE_API_KEY = import.meta.env.VITE_API_KEY;
 
 export async function fetchByCategory(
   type = "movie",
@@ -7,45 +8,47 @@ export async function fetchByCategory(
 ) {
   try {
     const response = await fetch(
-      `${BASE_URL}/${type}/${category}?api_key=${API_KEY}&page=${page}`
+      `${VITE_API_BASE_URL}/${type}/${category}?api_key=${VITE_API_KEY}&page=${page}`
     );
     const res = await response.json();
     return res;
-  } catch (error) { /* empty */ }
+  } catch (error) {
+    /* empty */
+  }
 }
 
 export async function fetchDetail(type = "movie", id) {
   try {
     const response = await fetch(
-      `${BASE_URL}/${type}/${id}?api_key=${API_KEY}`
+      `${VITE_API_BASE_URL}/${type}/${id}?api_key=${VITE_API_KEY}`
     );
     const res = await response.json();
     return res;
-  } catch (error) { }
+  } catch (error) {}
 }
 
 export async function fetchMovieCasts(movieId) {
   try {
     const response = await fetch(
-      `${BASE_URL}/movie/${movieId}/credits?api_key=${API_KEY}`
+      `${VITE_API_BASE_URL}/movie/${movieId}/credits?api_key=${VITE_API_KEY}`
     );
     const res = await response.json();
     return res;
-  } catch (error) { }
+  } catch (error) {}
 }
 
 export async function fetchSimilar(type = "movie", id) {
   try {
     const response = await fetch(
-      `${BASE_URL}/${type}/${id}/similar?api_key=${API_KEY}`
+      `${VITE_API_BASE_URL}/${type}/${id}/similar?api_key=${VITE_API_KEY}`
     );
     const res = await response.json();
     return res;
-  } catch (error) { }
+  } catch (error) {}
 }
 
 export async function fetchUsingParams(type = "movie", queryParams = "") {
-  let url = `${BASE_URL}/discover/${type}`;
+  let url = `${VITE_API_BASE_URL}/discover/${type}`;
   if (queryParams) {
     queryParams = queryParams.replace("genres", "with_genres");
     queryParams = queryParams.replace("runtime_from", "with_runtime.gte");
@@ -63,74 +66,74 @@ export async function fetchUsingParams(type = "movie", queryParams = "") {
       queryParams = queryParams.replace("to_date", "first_air_date.lte");
       queryParams = queryParams.replace("from_date", "first_air_date.gte");
     }
-    url += `?${queryParams}&api_key=${API_KEY}`;
+    url += `?${queryParams}&api_key=${VITE_API_KEY}`;
   } else {
-    url += `?api_key=${API_KEY}`;
+    url += `?api_key=${VITE_API_KEY}`;
   }
   try {
     const response = await fetch(url);
     const res = await response.json();
     return res;
-  } catch (error) { }
+  } catch (error) {}
 }
 
 export async function fetchReviews(type = "movie", id) {
   try {
     const response = await fetch(
-      `${BASE_URL}/${type}/${id}/reviews?api_key=${API_KEY}`
+      `${VITE_API_BASE_URL}/${type}/${id}/reviews?api_key=${VITE_API_KEY}`
     );
     const res = await response.json();
     return res;
-  } catch (error) { }
+  } catch (error) {}
 }
 
 export async function searchData(type = "movie", query) {
   query = query.trim();
   try {
     const response = await fetch(
-      `${BASE_URL}/search/${type}?api_key=${API_KEY}&query=${query}`
+      `${VITE_API_BASE_URL}/search/${type}?api_key=${VITE_API_KEY}&query=${query}`
     );
     const res = await response.json();
     return res;
-  } catch (error) { }
+  } catch (error) {}
 }
 
 export async function personKnownFor(personId) {
   try {
     const response = await fetch(
-      `${BASE_URL}/person/${personId}/combined_credits?api_key=${API_KEY}`
+      `${VITE_API_BASE_URL}/person/${personId}/combined_credits?api_key=${VITE_API_KEY}`
     );
     const res = await response.json();
     return res;
-  } catch (error) { }
+  } catch (error) {}
 }
 
 export async function fetchTVCredits(serialId) {
   try {
     const response = await fetch(
-      `${BASE_URL}/tv/${serialId}/aggregate_credits?api_key=${API_KEY}`
+      `${VITE_API_BASE_URL}/tv/${serialId}/aggregate_credits?api_key=${VITE_API_KEY}`
     );
     const res = await response.json();
     return res;
-  } catch (error) { }
+  } catch (error) {}
 }
 
 export async function fetchVideos(type = "movie", showId) {
   try {
     const response = await fetch(
-      `${BASE_URL}/${type}/${showId}/videos?api_key=${API_KEY}`
+      `${VITE_API_BASE_URL}/${type}/${showId}/videos?api_key=${VITE_API_KEY}`
     );
     const res = await response.json();
     return res;
-  } catch (error) { }
+  } catch (error) {}
 }
 
 export async function fetchGenreNames(type = "movie") {
   try {
     const response = await fetch(
-      `${BASE_URL}/genre/${type}/list?api_key=${API_KEY}`
+      `${VITE_API_BASE_URL}/genre/${type}/list?api_key=${VITE_API_KEY}`
     );
     const res = await response.json();
     return res;
-  } catch (error) { }
+  } catch (error) {}
 }

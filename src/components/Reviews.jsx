@@ -2,8 +2,9 @@ import { useLoaderData } from "react-router-dom";
 import { fetchDetail, fetchReviews } from "../apis/fetchMovies";
 import ReviewCard from "./ReviewCard";
 import { formatDate } from "../helpers/formatFunctions";
-import { IMAGE_BASE_URL } from "../helpers/creds.env";
 import defaultImg from "./../assets/default-movie.webp";
+
+const VITE_IMAGE_BASE_URL = import.meta.env.VITE_IMAGE_BASE_URL;
 
 function Reviews() {
   const {
@@ -12,7 +13,7 @@ function Reviews() {
   } = useLoaderData();
 
   const posterPath = poster_path
-    ? `${IMAGE_BASE_URL}/${poster_path}`
+    ? `${VITE_IMAGE_BASE_URL}/${poster_path}`
     : defaultImg;
 
   return (

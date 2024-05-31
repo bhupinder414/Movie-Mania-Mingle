@@ -1,6 +1,7 @@
-import { IMAGE_BASE_URL } from "../helpers/creds.env";
 import { formatDate } from "../helpers/formatFunctions";
 import { IoIosStar } from "react-icons/io";
+
+const VITE_IMAGE_BASE_URL = import.meta.env.VITE_IMAGE_BASE_URL;
 
 function ReviewCard({
   review: {
@@ -17,7 +18,7 @@ function ReviewCard({
         {avatar_path ? (
           <img
             className="w-14 h-14 rounded-full"
-            src={`${IMAGE_BASE_URL}/${avatar_path}`}
+            src={`${VITE_IMAGE_BASE_URL}/${avatar_path}`}
           />
         ) : (
           <div className="w-14 h-14 p-4  border-slate-200 bg-slate-500 text-white rounded-full text-center">

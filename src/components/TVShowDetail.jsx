@@ -1,6 +1,5 @@
 import { Link, useLoaderData } from "react-router-dom";
 
-import { IMAGE_BASE_URL } from "../helpers/creds.env";
 import defaultImg from "./../assets/default-movie.webp";
 import { formatDate } from "../helpers/formatFunctions";
 import CastCard from "./CastCard";
@@ -14,6 +13,8 @@ import {
   fetchVideos,
 } from "../apis/fetchMovies";
 import TVShowCard from "./TVShowCard";
+
+const VITE_IMAGE_BASE_URL = import.meta.env.VITE_IMAGE_BASE_URL;
 
 function TVShowDetail() {
   const data = useLoaderData();
@@ -37,10 +38,10 @@ function TVShowDetail() {
   } = data;
 
   const posterPath = poster_path
-    ? `${IMAGE_BASE_URL}/${poster_path}`
+    ? `${VITE_IMAGE_BASE_URL}/${poster_path}`
     : defaultImg;
   const backDropPath = backdrop_path
-    ? `${IMAGE_BASE_URL}${backdrop_path}`
+    ? `${VITE_IMAGE_BASE_URL}${backdrop_path}`
     : defaultImg;
 
   const show_genres = genres.map((genre) => genre.id).join(",");

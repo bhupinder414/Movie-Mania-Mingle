@@ -1,9 +1,10 @@
 import { useLoaderData } from "react-router-dom";
 import { fetchDetail, personKnownFor } from "../apis/fetchMovies";
-import { IMAGE_BASE_URL } from "../helpers/creds.env";
 import defaultImg from "./../assets/default_person.jpg";
 import PersonKnownFor from "./PersonKnownFor";
 import { formatDate } from "../helpers/formatFunctions";
+
+const VITE_IMAGE_BASE_URL = import.meta.env.VITE_IMAGE_BASE_URL;
 
 function PersonDetail() {
   const {
@@ -19,7 +20,7 @@ function PersonDetail() {
     known_for: { cast },
   } = useLoaderData();
   let imagePath = profile_path
-    ? `${IMAGE_BASE_URL}/${profile_path}`
+    ? `${VITE_IMAGE_BASE_URL}/${profile_path}`
     : defaultImg;
 
   const genders = [];

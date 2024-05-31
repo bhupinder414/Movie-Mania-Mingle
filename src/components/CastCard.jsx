@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
-import { IMAGE_BASE_URL } from "../helpers/creds.env";
 import defaultImg from "./../assets/default_person.jpg";
 
 import Card from "./Card";
+
+const VITE_IMAGE_BASE_URL = import.meta.env.VITE_IMAGE_BASE_URL;
 
 function CastCard({
   character,
@@ -13,7 +14,7 @@ function CastCard({
   id,
 }) {
   let imagePath = profile_path
-    ? `${IMAGE_BASE_URL}/${profile_path}`
+    ? `${VITE_IMAGE_BASE_URL}/${profile_path}`
     : defaultImg;
   return (
     <Link to={`/person/${id}`}>

@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
-import { IMAGE_BASE_URL } from "../helpers/creds.env";
 import defaultImg from "./../assets/default_person.jpg";
 import { fetchDetail } from "../apis/fetchMovies";
 import { Link } from "react-router-dom";
 
+const VITE_IMAGE_BASE_URL = import.meta.env.VITE_IMAGE_BASE_URL;
+
 function SearchResultPersons({ item, activeId }) {
   const posterPath = item.poster_path
-    ? `${IMAGE_BASE_URL}/${item.poster_path}`
+    ? `${VITE_IMAGE_BASE_URL}/${item.poster_path}`
     : defaultImg;
 
   const { id } = item;
