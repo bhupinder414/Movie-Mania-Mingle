@@ -8,6 +8,9 @@ function Search() {
   function handleSubmit(e) {
     e.preventDefault();
     let searchQuery = query;
+    if (searchQuery === "") {
+      return;
+    }
     setQuery("");
     navigate(`/search?query=${searchQuery}`);
   }
