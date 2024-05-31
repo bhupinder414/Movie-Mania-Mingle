@@ -10,7 +10,7 @@ Movie Mania Mingle allows users to:
 - Search for specific movies and TV shows using the search functionality.
 
 ## Demo
-
+https://moviemaniamingle.netlify.app/
 
 ## Built With
 
