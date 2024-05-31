@@ -1,8 +1,20 @@
-# React + Vite
+# Movie Mania Mingle
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Movie Mania Mingle is a comprehensive movie website that showcases all movies and TV shows, including their casts and trailers. Users can search for movies and TV shows seamlessly. The project is built with React, React Router DOM, Tailwind CSS, and utilizes the TMDB Movie API for data.
 
-Currently, two official plugins are available:
+## Description
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Movie Mania Mingle allows users to:
+- Browse through a vast collection of movies and TV shows.
+- View detailed information about each movie and TV show, including cast and trailers.
+- Search for specific movies and TV shows using the search functionality.
+
+## Demo
+
+
+## Built With
+
+- [React](https://reactjs.org/)
+- [React Router DOM](https://reactrouter.com/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [TMDB Movie API](https://www.themoviedb.org/documentation/api)
