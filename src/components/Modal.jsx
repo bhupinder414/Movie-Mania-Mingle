@@ -13,8 +13,7 @@ function Modal({ video_id, closeModal, name }) {
           <ImCross className="cursor-pointer" onClick={closeModal} />
         </div>
         <iframe
-          width="1116"
-          height="627"
+          className="w-[325px] h-[325px] sm:h-[200px] sm:w-[500px] lg:w-[1116px] lg:h-[627px]"
           src={`https://www.youtube.com/embed/${video_id}?autoplay=1`}
           title="YouTube video player"
           allowFullScreen

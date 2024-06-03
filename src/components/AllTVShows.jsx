@@ -41,15 +41,15 @@ function AllTVShows() {
   }
 
   return (
-    <div className="grid grid-cols-4 ">
-      <div className="col-span-1 flex flex-col">
+    <div className="grid md:grid-cols-4  w-[96%] sm:w-[98%]  ml-3 md:w-[98.6%] md:ml-4 md:mr-4 ">
+      <div className="md:col-span-1  flex flex-col gap-4 w-[96%]   md:ml-8 mt-4 md:mb-4">
         <Sorting options={tvSortOptions} selectedValue={selectedValue} />
         <Filter genres={genres.genres} searchedGenres={searchedGenres} />
       </div>
-      <div className=" col-span-3">
-        <div className=" text-start font-bold text-3xl m-5">
+      <div className="md:col-span-3">
+        <div className=" font-bold text-3xl text-center md:text-start mt-5 mb-5 md:m-5">
           <Link
-            className="ml-8 text-center text-white bg-purple-400 pt-0.5 pb-0.5 pl-3 pr-3 rounded-xl"
+            className="md:ml-8 text-center text-white bg-purple-400 pt-0.5 pb-0.5 pl-3 pr-3 rounded-xl"
             to="/tv"
           >
             <IoMdArrowRoundBack className=" align-middle inline-block w-8 h-8" />{" "}
@@ -58,7 +58,7 @@ function AllTVShows() {
         </div>
 
         {data.shows.results.length === 0 ? (
-          <div className="ml-8 text-center text-3xl font-bol">
+          <div className="md:ml-8 mb-8 text-center text-3xl font-bold">
             No TV Show Found.
           </div>
         ) : (

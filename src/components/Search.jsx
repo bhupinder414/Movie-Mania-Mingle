@@ -20,10 +20,10 @@ function Search() {
   }
 
   return (
-    <div className=" w-[38%] text-gray-500  ">
+    <div className="w-full   sm:m-0 sm:w-[55%] lg:w-[38%] text-gray-500  ">
       <form className="flex" onSubmit={handleSubmit}>
         <input
-          className=" focus:outline-none focus:ring-transparent focus:border-transparent rounded-full bg-white h-10 w-full p-4 "
+          className="ml-10 sm:ml-0 focus:outline-none focus:ring-transparent focus:border-transparent rounded-full bg-white h-10 w-full p-4 "
           placeholder="Search for Movies,TV Shows and Persons"
           type="text"
           name="query"

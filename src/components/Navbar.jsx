@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 function Navbar() {
   return (
     <nav>
-      <ul className="flex gap-5">
+      <ul className="flex gap-4 sm:gap-5">
         <li>
           <NavLink
             to="/"

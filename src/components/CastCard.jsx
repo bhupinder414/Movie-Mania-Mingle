@@ -21,7 +21,7 @@ function CastCard({
       <Card>
         <div
           style={{ backgroundImage: `url(${defaultImg})` }}
-          className={`   bg-contain bg-center   bg-white/30 bg-blend-difference`}
+          className={`   bg-contain bg-center   bg-white/30 bg-blend-difference rounded-xl`}
         >
           <img
             loading="lazy"

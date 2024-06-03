@@ -19,15 +19,17 @@ function TrendingMovies() {
 
   return (
     <div>
-      <h2 className="text-center font-bold text-3xl m-5">
-        <Link
-          className="ml-8 float-left text-white bg-purple-400 pt-0.5 pb-0.5 pl-3 pr-3 rounded-xl"
-          to="/"
-        >
-          <IoMdArrowRoundBack className=" align-middle inline-block w-8 h-8" />{" "}
-          Go Back
-        </Link>{" "}
-        Trending Movies
+      <h2 className="flex flex-col gap-4 md:block text-center font-bold text-3xl m-5">
+        <div>
+          <Link
+            className="md:ml-8 md:float-left text-white bg-purple-400 pt-0.5 pb-0.5 pl-3 pr-3 rounded-xl"
+            to="/"
+          >
+            <IoMdArrowRoundBack className=" align-middle inline-block w-8 h-8" />{" "}
+            Go Back
+          </Link>
+        </div>{" "}
+        <span>Trending Movies</span>
       </h2>
       <TrendingMoviesContainer movies={data.results} />
       <Pagination totalPages={totalPages} currentPage={page} />

@@ -24,23 +24,25 @@ function SearchResultMovie({ item, activeId }) {
 
   return (
     <Link to={`/movies/${id}`}>
-      <div className="flex gap-4 m-4 border-slate-400 border rounded-xl w-[65%] items-center">
+      <div className="flex flex-col sm:flex-row gap-4 m-4 border-slate-400 border rounded-xl lg:w-[65%] items-center">
         <img
           src={posterPath}
-          className="w-36 min-w-36 rounded-tl-xl rounded-bl-xl border-r-slate-400 border-r"
+          className="sm:w-36 sm:min-w-36 w-full rounded-tr-xl sm:rounded-tr-none rounded-tl-xl sm:rounded-bl-xl border-r-slate-400 border-r"
           alt={`image of ${movieDetail.title}`}
         />
         <div className="">
-          <div className="text-3xl font-bold">{movieDetail.title}</div>
-          <div className="italic mt-2">
+          <div className=" text-center sm:text-left text-3xl font-bold">
+            {movieDetail.title}
+          </div>
+          <div className="text-center sm:text-left italic mt-2">
             {formatDate(movieDetail.release_date)}
           </div>
           {movieDetail.genres && (
-            <div className="font-semibold mt-2">
+            <div className="text-center sm:text-left font-semibold mt-2">
               {movieDetail.genres.map((genre) => genre.name).join(", ")}
             </div>
           )}
-          <div className=" pr-2 pb-1 mt-2 line-clamp-3 overflow-hidden">
+          <div className="p-2 sm:pl-0 sm:pr-2 pb-1 mt-2 line-clamp-5 sm:line-clamp-3 overflow-hidden">
             {movieDetail.overview}
           </div>
         </div>

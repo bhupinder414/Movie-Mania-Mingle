@@ -59,18 +59,20 @@ function TVShowDetail() {
     <>
       <div
         style={{ backgroundImage: `url(${backDropPath})` }}
-        className={`grid grid-cols-4  gap-12 p-8   bg-contain bg-center   bg-white/30 bg-blend-difference`}
+        className={`grid sm:grid-cols-5 lg:grid-cols-4  gap-12 p-8   bg-contain bg-center   bg-white/30 bg-blend-difference`}
       >
-        <div className="col-span-1">
+        <div className="sm:col-span-2 lg:col-span-1">
           <img
             src={posterPath}
             className="rounded-xl  object-cover w-full h-full"
             alt={`${name} Poster`}
           />
         </div>
-        <div className="col-span-3">
-          <h2 className="text-5xl font-bold text-white">{name}</h2>
-          <ul className="flex gap-8 list-disc list-inside pt-2 text-white text-lg">
+        <div className="col-span-0  sm:col-span-3">
+          <h2 className="text-5xl text-center lg:text-left font-bold text-white">
+            {name}
+          </h2>
+          <ul className="flex flex-col gap-2 sm:flex-row sm:gap-8 list-disc list-inside pt-2 text-white text-lg">
             {production_countries?.[0]?.iso_3166_1 && (
               <li>{production_countries?.[0]?.iso_3166_1}</li>
             )}
@@ -84,7 +86,7 @@ function TVShowDetail() {
 
           <div className="flex gap-4 flex-wrap pt-4">
             {genres.map((genre, ind) => {
-              let color = ind % 2 == 0 ? "bg-lime-600" : "bg-pink-800";
+              let color = ind % 2 == 0 ? "bg-violet-400" : "bg-blue-300";
               return (
                 <span
                   className={`p-2  rounded-xl text-white ${color}`}
@@ -137,7 +139,7 @@ function TVShowDetail() {
         </div>
       )}
       {cast.length > 0 && (
-        <div className="flex gap-4 w-[96%] overflow-x-scroll m-8 mt-2">
+        <div className="flex gap-4 md:w-[96%] overflow-x-scroll m-8 mt-2">
           {cast.map((ele) => (
             <CastCard
               key={ele.id}
@@ -153,10 +155,10 @@ function TVShowDetail() {
       )}
       {similar_shows.results.length > 0 && (
         <>
-          <div className="ml-10 mt-4 text-4xl font-bold flex gap-4">
-            <h1>Similar TV Shows</h1>
+          <div className="ml-10 mt-4 text-3xl sm:text-4xl mr-10 sm:mr-0 font-bold flex flex-col sm:flex-row gap-4">
+            <h1 className=" text-center sm:text-left">Similar TV Shows</h1>
             <Link
-              className="bg-purple-400 text-white p-1 pl-2 pr-2  rounded-lg"
+              className="bg-purple-400 text-white text-center p-1 pl-2 pr-2  rounded-lg"
               to={`/tv/all?genres=${show_genres}`}
             >
               Explore

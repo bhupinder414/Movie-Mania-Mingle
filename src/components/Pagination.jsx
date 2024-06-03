@@ -11,7 +11,7 @@ function Pagination({ totalPages, currentPage }) {
     setSearchParams(searchParams);
   }
   return (
-    <div className=" float-right m-5 text-center ">
+    <div className=" flex justify-center lg:block lg:float-right m-5 lg:mr-10 text-center ">
       <ul className="flex  items-center ">
         {currentPage > 1 ? (
           <li
@@ -40,7 +40,7 @@ function Pagination({ totalPages, currentPage }) {
         )}
         {currentPage >= 3 ? (
           <li
-            className="p-2 border border-slate-300 cursor-pointer min-w-10"
+            className="p-2 hidden sm:block border border-slate-300 cursor-pointer min-w-10"
             onClick={() => goToPage(currentPage - 1)}
           >
             {currentPage - 1}
@@ -60,7 +60,7 @@ function Pagination({ totalPages, currentPage }) {
         )}
         {currentPage < totalPages - 1 ? (
           <li
-            className="p-2 border border-slate-300 cursor-pointer min-w-10"
+            className="p-2 hidden sm:block border border-slate-300 cursor-pointer min-w-10"
             onClick={() => goToPage(currentPage + 1)}
           >
             {currentPage + 1}

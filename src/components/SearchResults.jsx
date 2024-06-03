@@ -45,8 +45,8 @@ function SearchResults() {
   }
 
   return (
-    <div className="ml-8">
-      <div className="flex items-center">
+    <div className="sm:ml-8 m-4 sm:mr-8">
+      <div className="flex flex-col sm:flex-row sm:items-center">
         <div className="text-xl font-bold italic m-4 ">
           Search Results for {searchQuery}:
         </div>

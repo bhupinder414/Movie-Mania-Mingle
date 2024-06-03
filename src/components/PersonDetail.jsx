@@ -30,9 +30,9 @@ function PersonDetail() {
   genders[3] = "Non-binary";
 
   return (
-    <div>
-      <div className="flex p-8 pl-20 pr-20 gap-4 bg-gray-800/30 text-white ">
-        <div className=" min-w-[300px] h-[400px]">
+    <div className=" overflow-x-auto">
+      <div className="flex flex-col sm:flex-row p-8 md:pl-20 md:pr-20 gap-4 bg-gray-800/30 text-white ">
+        <div className=" sm:min-w-[300px] sm:h-[400px]">
           <img
             className=" rounded-xl object-cover w-full h-full"
             src={imagePath}
@@ -40,26 +40,32 @@ function PersonDetail() {
           />
         </div>
         <div>
-          <div className="font-bold text-5xl ">{name}</div>
+          <div className="font-bold text-3xl text-center sm:text-left  sm:text-5xl ">
+            {name}
+          </div>
           {biography && (
-            <div className="mt-6 font-semibold text-2xl">Biography</div>
+            <div className="mt-6 font-semibold text-center sm:text-left text-2xl">
+              Biography
+            </div>
           )}
           <div className="mt-4">{biography}</div>
-          <div className="mt-6 font-semibold text-2xl">Personal Info</div>
-          <div className="flex flex-row gap-12 mt-2">
-            <div className="flex flex-col">
-              <span className="font-semibold text-lg">Known For</span>
-              <span className="italic">{known_for_department}</span>
+          <div className="mt-6 font-semibold text-center sm:text-left text-2xl">
+            Personal Info
+          </div>
+          <div className="flex flex-col md:flex-row md:gap-12 mt-2">
+            <div className="grid grid-cols-2 md:flex md:flex-row  md:gap-0 md:flex-col">
+              <span className="colspan-1 font-semibold text-lg">Known For</span>
+              <span className="colspan-1 italic">{known_for_department}</span>
             </div>
-            <div className="flex flex-col">
+            <div className="grid grid-cols-2 md:flex md:flex-row  md:gap-0 md:flex-col">
               <span className="font-semibold text-lg">Gender</span>
               <span className="italic">{genders[gender]}</span>
             </div>
-            <div className="flex flex-col">
+            <div className="grid grid-cols-2 md:flex md:flex-row  md:gap-0 md:flex-col">
               <span className="font-semibold text-lg">Birthday</span>
               <span className="italic">{formatDate(birthday)}</span>
             </div>
-            <div className="flex flex-col">
+            <div className="grid grid-cols-2 md:flex md:flex-row  md:gap-0 md:flex-col">
               <span className="font-semibold text-lg">Place of Birth</span>
               <span className="italic">{place_of_birth}</span>
             </div>

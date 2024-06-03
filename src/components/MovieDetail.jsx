@@ -81,18 +81,20 @@ function MovieDetail() {
       )}
       <div
         style={{ backgroundImage: `url(${backDropPath})` }}
-        className={`grid grid-cols-4  gap-12 p-8   bg-contain bg-center   bg-white/30 bg-blend-difference`}
+        className={`grid sm:grid-cols-4  gap-12 p-8   bg-contain bg-center   bg-white/30 bg-blend-difference`}
       >
-        <div className=" col-span-1">
+        <div className=" sm:col-span-1">
           <img
             src={posterPath}
             className="rounded-xl w-full"
             alt={`${movie.title} Poster`}
           />
         </div>
-        <div className=" col-span-3">
-          <h2 className="text-5xl font-bold text-white">{movie.title}</h2>
-          <ul className="flex gap-8 list-disc list-inside pt-2 text-white text-lg">
+        <div className="col-span-0  sm:col-span-3">
+          <h2 className="text-5xl text-center lg:text-left font-bold text-white">
+            {movie.title}
+          </h2>
+          <ul className="flex flex-col gap-2 sm:flex-row sm:gap-8 list-disc list-inside pt-2 text-white text-lg">
             {movie.production_countries?.[0]?.iso_3166_1 && (
               <li>{movie.production_countries?.[0]?.iso_3166_1}</li>
             )}
@@ -177,7 +179,7 @@ function MovieDetail() {
         </div>
       )}
       {movie_cast?.cast.length > 0 && (
-        <div className="flex gap-4 w-[96%] overflow-x-scroll m-8 mt-2">
+        <div className="flex gap-4 md:w-[96%] overflow-x-scroll m-8 mt-2">
           {movie_cast.cast.map((cast) => (
             <CastCard
               key={cast.id}
@@ -193,10 +195,10 @@ function MovieDetail() {
       {similar_movies_data.length > 0 && (
         <>
           {" "}
-          <div className="ml-10 mt-4 text-4xl font-bold flex gap-4">
-            <h1>Similar Movies</h1>
+          <div className="ml-10 mt-4 text-4xl mr-10 sm:mr-0 font-bold flex flex-col sm:flex-row gap-4">
+            <h1 className=" text-center sm:text-left">Similar Movies</h1>
             <Link
-              className="bg-purple-400 text-white p-1 pl-2 pr-2  rounded-lg"
+              className="bg-purple-400 text-white text-center p-1 pl-2 pr-2  rounded-lg"
               to={`/movies/all?genres=${genres}`}
             >
               Explore
@@ -215,7 +217,7 @@ function MovieDetail() {
 
 export default MovieDetail;
 
-export async function loader({ request, params }) {
+export async function loader({ params }) {
   const { movieId } = params;
   let result = {};
   result["movie_cast"] = await fetchMovieCasts(movieId);

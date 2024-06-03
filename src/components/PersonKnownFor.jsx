@@ -3,11 +3,11 @@ import TrendingCard from "./TrendingCard";
 
 function PersonKnownFor({ casts }) {
   return (
-    <div className="ml-20 mr-20 mb-4 mt-4">
+    <div className="md:pl-20 md:pr-20 p-4 mb-4 mt-4 overflow-x-auto">
       {casts?.length > 0 && (
         <>
           <div className="text-2xl font-semibold">Known For</div>
-          <div className="w-[84rem] overflow-x-auto mt-4">
+          <div className=" overflow-x-auto mt-4">
             <div className="flex gap-2 flex-nowrap">
               {casts?.map((cast) => {
                 if (cast.media_type === "tv") {

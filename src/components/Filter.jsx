@@ -10,7 +10,7 @@ function Filter({ genres, searchedGenres, setSearch }) {
     .map((ele) => +ele);
   const [searchParams, setSearchParams] = useSearchParams();
   return (
-    <div className="ml-8 mt-4 mb-4 border p-4 rounded-xl border-slate-200 ">
+    <div className=" border p-4 rounded-xl border-slate-200 ">
       <div className="font-bold text-2xl mb-4">Genres</div>
       <div className="w-full mb-4">
         <ul className="w-full flex gap-2 flex-wrap">
@@ -47,7 +47,7 @@ function Filter({ genres, searchedGenres, setSearch }) {
           </label>
           <DatePickerComponent name="from_date" />
         </div>
-        <div className="flex gap-10 mt-4 mb-4 items-center">
+        <div className=" flex gap-10 mt-4 mb-4 items-center">
           <label className="font-semibold text-xl" htmlFor="to_date">
             To
           </label>

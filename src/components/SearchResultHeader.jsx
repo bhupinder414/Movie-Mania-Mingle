@@ -9,7 +9,7 @@ function SearchResultHeader({ results, activeId, setActiveId }) {
   }
   return (
     <div className="">
-      <ul className="flex  bg-slate-200 rounded-full p-[0.1rem]">
+      <ul className="flex flex-col sm:flex-row rounded-3xl  bg-slate-200 sm:rounded-full p-[0.1rem]">
         {results.map((element) => {
           return (
             <li

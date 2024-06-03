@@ -22,13 +22,13 @@ const DatePickerComponent = ({ name }) => {
   }
 
   return (
-    <div>
+    <div className="flex">
       <DatePicker
         name={name}
         selected={selectedValue}
         onChange={(date) => handleChange(date)}
         dateFormat="dd/MM/yyyy"
-        className="border border-slate-300  focus:border-slate-400 focus:outline-none rounded-md px-4 py-2"
+        className="border w-full border-slate-300  focus:border-slate-400 focus:outline-none rounded-md px-4 py-2"
       />
       <ImCross
         className=" float-right top-3 right-6 relative cursor-pointer"
