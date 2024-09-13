@@ -6,3 +6,27 @@ input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
 }
+
+.custom-scrollbar::-webkit-scrollbar {
+  @apply h-3;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  @apply bg-slate-300 rounded-full;
+}
+
+html::-webkit-scrollbar {
+  @apply h-3;
+}
+
+html::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+html::-webkit-scrollbar-thumb {
+  @apply bg-slate-300 rounded-full;
+}

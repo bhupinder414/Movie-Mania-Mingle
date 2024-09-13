@@ -1,31 +1,20 @@
-import { useLoaderData } from "react-router-dom";
-import { fetchByCategory } from "../apis/fetchMovies";
-import TVShowContainer from "./TVShowContainer";
+import { SHOWS_TYPE_CONTAINERS } from "../utils/constants";
+import List from "./List";
 
-function TVShows() {
-  const data = useLoaderData();
+const TVShows = () => {
   return (
     <>
-      <TVShowContainer
-        shows={data.top_rated.results}
-        name="Top Rated"
-        path="top-rated"
-      />
-      <TVShowContainer
-        shows={data.popular.results}
-        name="Popular"
-        path="popular"
-      />
+      {SHOWS_TYPE_CONTAINERS.map((show) => (
+        <List
+          key={show.type}
+          title={show.title}
+          category={show.category}
+          type={show.type}
+          linkTo={show.linkTo}
+        />
+      ))}
     </>
   );
-}
+};
 
 export default TVShows;
-
-export async function loader() {
-  let res = {};
-  res["top_rated"] = await fetchByCategory("tv", "top_rated");
-  res["popular"] = await fetchByCategory("tv", "popular");
-
-  return res;
-}

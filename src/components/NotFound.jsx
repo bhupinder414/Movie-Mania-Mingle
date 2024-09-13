@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Footer from "./Footer";
 import Header from "./Header";
 
-function NotFound() {
+const NotFound = () => {
   return (
     <div className="grid grid-rows-5">
       <div className="bg-gray-100 row-span-1">
@@ -27,6 +27,6 @@ function NotFound() {
       </div>
     </div>
   );
-}
+};
 
 export default NotFound;

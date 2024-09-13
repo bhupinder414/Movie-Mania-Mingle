@@ -1,16 +1,17 @@
+import { SHOW_TYPE_KEY } from "../utils/constants";
 import TVShowCard from "./TVShowCard";
 import TrendingCard from "./TrendingCard";
 
-function PersonKnownFor({ casts }) {
+const PersonKnownFor = ({ casts }) => {
   return (
-    <div className="md:pl-20 md:pr-20 p-4 mb-4 mt-4 overflow-x-auto">
+    <div className="md:pl-20 md:pr-20 p-4 mb-4 mt-4 overflow-x-auto custom-scrollbar pb-1">
       {casts?.length > 0 && (
         <>
           <div className="text-2xl font-semibold">Known For</div>
-          <div className=" overflow-x-auto mt-4">
+          <div className=" overflow-x-auto mt-4 custom-scrollbar ">
             <div className="flex gap-2 flex-nowrap">
               {casts?.map((cast) => {
-                if (cast.media_type === "tv") {
+                if (cast.media_type === SHOW_TYPE_KEY) {
                   return <TVShowCard key={cast.id} show={cast} />;
                 } else {
                   return <TrendingCard key={cast.id} movie={cast} />;
@@ -22,6 +23,6 @@ function PersonKnownFor({ casts }) {
       )}
     </div>
   );
-}
+};
 
 export default PersonKnownFor;

@@ -1,11 +1,13 @@
+import { MOVIE_TYPE_KEY } from "../utils/constants";
+
 const VITE_API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 const VITE_API_KEY = import.meta.env.VITE_API_KEY;
 
-export async function fetchByCategory(
-  type = "movie",
+export const fetchByCategory = async (
+  type = MOVIE_TYPE_KEY,
   category = "now_playing",
   page = 1
-) {
+) => {
   try {
     const response = await fetch(
       `${VITE_API_BASE_URL}/${type}/${category}?api_key=${VITE_API_KEY}&page=${page}`
@@ -15,9 +17,9 @@ export async function fetchByCategory(
   } catch (error) {
     /* empty */
   }
-}
+};
 
-export async function fetchDetail(type = "movie", id) {
+export const fetchDetail = async (type = MOVIE_TYPE_KEY, id) => {
   try {
     const response = await fetch(
       `${VITE_API_BASE_URL}/${type}/${id}?api_key=${VITE_API_KEY}`
@@ -25,9 +27,9 @@ export async function fetchDetail(type = "movie", id) {
     const res = await response.json();
     return res;
   } catch (error) {}
-}
+};
 
-export async function fetchMovieCasts(movieId) {
+export const fetchMovieCasts = async (movieId) => {
   try {
     const response = await fetch(
       `${VITE_API_BASE_URL}/movie/${movieId}/credits?api_key=${VITE_API_KEY}`
@@ -35,9 +37,9 @@ export async function fetchMovieCasts(movieId) {
     const res = await response.json();
     return res;
   } catch (error) {}
-}
+};
 
-export async function fetchSimilar(type = "movie", id) {
+export const fetchSimilar = async (type = MOVIE_TYPE_KEY, id) => {
   try {
     const response = await fetch(
       `${VITE_API_BASE_URL}/${type}/${id}/similar?api_key=${VITE_API_KEY}`
@@ -45,9 +47,9 @@ export async function fetchSimilar(type = "movie", id) {
     const res = await response.json();
     return res;
   } catch (error) {}
-}
+};
 
-export async function fetchUsingParams(type = "movie", queryParams = "") {
+export const fetchUsingParams = async (type = MOVIE_TYPE_KEY, queryParams = "") => {
   let url = `${VITE_API_BASE_URL}/discover/${type}`;
   if (queryParams) {
     queryParams = queryParams.replace("genres", "with_genres");
@@ -56,7 +58,7 @@ export async function fetchUsingParams(type = "movie", queryParams = "") {
     queryParams = queryParams.replace("vote_average_from", "vote_average.gte");
     queryParams = queryParams.replace("vote_average_to", "vote_average.lte");
 
-    if (type === "movie") {
+    if (type === MOVIE_TYPE_KEY) {
       queryParams = queryParams.replace("to_date", "primary_release_date.lte");
       queryParams = queryParams.replace(
         "from_date",
@@ -75,9 +77,9 @@ export async function fetchUsingParams(type = "movie", queryParams = "") {
     const res = await response.json();
     return res;
   } catch (error) {}
-}
+};
 
-export async function fetchReviews(type = "movie", id) {
+export const fetchReviews = async (type = MOVIE_TYPE_KEY, id) => {
   try {
     const response = await fetch(
       `${VITE_API_BASE_URL}/${type}/${id}/reviews?api_key=${VITE_API_KEY}`
@@ -85,9 +87,9 @@ export async function fetchReviews(type = "movie", id) {
     const res = await response.json();
     return res;
   } catch (error) {}
-}
+};
 
-export async function searchData(type = "movie", query) {
+export const searchData = async (type = MOVIE_TYPE_KEY, query) => {
   query = query.trim();
   try {
     const response = await fetch(
@@ -96,9 +98,9 @@ export async function searchData(type = "movie", query) {
     const res = await response.json();
     return res;
   } catch (error) {}
-}
+};
 
-export async function personKnownFor(personId) {
+export const personKnownFor = async (personId) => {
   try {
     const response = await fetch(
       `${VITE_API_BASE_URL}/person/${personId}/combined_credits?api_key=${VITE_API_KEY}`
@@ -106,9 +108,9 @@ export async function personKnownFor(personId) {
     const res = await response.json();
     return res;
   } catch (error) {}
-}
+};
 
-export async function fetchTVCredits(serialId) {
+export const fetchTVCredits = async (serialId) => {
   try {
     const response = await fetch(
       `${VITE_API_BASE_URL}/tv/${serialId}/aggregate_credits?api_key=${VITE_API_KEY}`
@@ -116,9 +118,9 @@ export async function fetchTVCredits(serialId) {
     const res = await response.json();
     return res;
   } catch (error) {}
-}
+};
 
-export async function fetchVideos(type = "movie", showId) {
+export const fetchVideos = async (type = MOVIE_TYPE_KEY, showId) => {
   try {
     const response = await fetch(
       `${VITE_API_BASE_URL}/${type}/${showId}/videos?api_key=${VITE_API_KEY}`
@@ -126,9 +128,9 @@ export async function fetchVideos(type = "movie", showId) {
     const res = await response.json();
     return res;
   } catch (error) {}
-}
+};
 
-export async function fetchGenreNames(type = "movie") {
+export const fetchGenreNames = async (type = MOVIE_TYPE_KEY) => {
   try {
     const response = await fetch(
       `${VITE_API_BASE_URL}/genre/${type}/list?api_key=${VITE_API_KEY}`
@@ -136,4 +138,15 @@ export async function fetchGenreNames(type = "movie") {
     const res = await response.json();
     return res;
   } catch (error) {}
-}
+};
+
+export const fetchSeasonDetail = async (showId, seasonNumber) => {
+  try {
+    const response = await fetch(
+      `${VITE_API_BASE_URL}/tv/${showId}/season/${seasonNumber}?api_key=${VITE_API_KEY}`
+    );
+    const res = await response.json();
+    return res;
+  } catch (error) {}
+};
+

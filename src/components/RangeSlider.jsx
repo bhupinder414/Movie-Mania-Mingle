@@ -1,17 +1,22 @@
 import RangeSlider from "react-range-slider-input";
 import "react-range-slider-input/dist/style.css";
 import { useSearchParams } from "react-router-dom";
+import {
+  DEFAULT_PAGE,
+  PAGE_KEY,
+  RUNTIME_FROM,
+  RUNTIME_TO,
+} from "../utils/constants";
 
-function RangeSliderComponent({ min, max, defaultValue, step }) {
+const RangeSliderComponent = ({ min, max, defaultValue, step }) => {
   const [params, setParams] = useSearchParams();
-  const lowerVal = params.get("runtime_from") || defaultValue[0];
-  const upperVal = params.get("runtime_to") || defaultValue[1];
+  const lowerVal = params.get(RUNTIME_FROM) || defaultValue[0];
+  const upperVal = params.get(RUNTIME_TO) || defaultValue[1];
 
   const handleInput = (newValue) => {
-    params.set("runtime_from", newValue[0]);
-    params.set("runtime_to", newValue[1]);
-    params.set("page", 1);
-
+    params.set(RUNTIME_FROM, newValue[0]);
+    params.set(RUNTIME_TO, newValue[1]);
+    params.set(PAGE_KEY, DEFAULT_PAGE);
     setParams(params);
   };
 
@@ -33,6 +38,6 @@ function RangeSliderComponent({ min, max, defaultValue, step }) {
       <div className="text-center font-semibold mt-2">{`${lowerVal} minutes - ${upperVal} minutes`}</div>
     </>
   );
-}
+};
 
 export default RangeSliderComponent;

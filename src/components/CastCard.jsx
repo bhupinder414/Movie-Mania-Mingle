@@ -1,32 +1,23 @@
 import { Link } from "react-router-dom";
-import defaultImg from "./../assets/default_person.jpg";
-
 import Card from "./Card";
+import Image from "./Image";
+import { PERSON_TYPE_KEY } from "../utils/constants";
 
-const VITE_IMAGE_BASE_URL = import.meta.env.VITE_IMAGE_BASE_URL;
-
-function CastCard({
+const CastCard = ({
   character,
   original_name,
   profile_path,
   known_for_department,
   episode_count,
   id,
-}) {
-  let imagePath = profile_path
-    ? `${VITE_IMAGE_BASE_URL}/${profile_path}`
-    : defaultImg;
+}) => {
   return (
     <Link to={`/person/${id}`}>
       <Card>
-        <div
-          style={{ backgroundImage: `url(${defaultImg})` }}
-          className={`   bg-contain bg-center   bg-white/30 bg-blend-difference rounded-xl`}
-        >
-          <img
-            loading="lazy"
-            className="rounded-xl min-h-[86%] min-w-full"
-            src={imagePath}
+        <div className={`w-full h-80   bg-gray-100 rounded-xl`}>
+          <Image
+            type={PERSON_TYPE_KEY}
+            path={profile_path}
             alt={`image of ${original_name}`}
           />
         </div>
@@ -43,6 +34,6 @@ function CastCard({
       </Card>
     </Link>
   );
-}
+};
 
 export default CastCard;

@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-function Navbar() {
+const Navbar = () => {
   return (
     <nav>
       <ul className="flex gap-4 sm:gap-5">
@@ -27,6 +27,6 @@ function Navbar() {
       </ul>
     </nav>
   );
-}
+};
 
 export default Navbar;

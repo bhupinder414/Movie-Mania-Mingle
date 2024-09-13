@@ -3,23 +3,24 @@ import { format } from "date-fns";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useSearchParams } from "react-router-dom";
+import { DEFAULT_PAGE, PAGE_KEY } from "../utils/constants";
 
 const DatePickerComponent = ({ name }) => {
   const [params, setSearchParams] = useSearchParams();
   const selectedValue = params.get(name) || "";
 
-  function handleChange(date) {
+  const handleChange = (date) => {
     const formattedDate = format(date, "yyyy-MM-dd");
     params.set(name, formattedDate);
-    params.set("page", 1);
+    params.set(PAGE_KEY, DEFAULT_PAGE);
 
     setSearchParams(params);
-  }
+  };
 
-  function clearSearch() {
+  const clearSearch = () => {
     params.delete(name);
     setSearchParams(params);
-  }
+  };
 
   return (
     <div className="flex">

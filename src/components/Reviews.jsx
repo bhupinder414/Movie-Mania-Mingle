@@ -1,54 +1,45 @@
-import { useLoaderData } from "react-router-dom";
-import { fetchDetail, fetchReviews } from "../apis/fetchMovies";
+import { useParams } from "react-router-dom";
 import ReviewCard from "./ReviewCard";
-import { formatDate } from "../helpers/formatFunctions";
-import defaultImg from "./../assets/default-movie.webp";
+import ShimmerReviewsPage from "./ShimmerReviewsPage";
+import useReviews from "../hooks/useReviews";
+import useDetails from "../hooks/useDetails";
+import SmallTVCard from "./SmallTVCard";
+import { MOVIE_TYPE_KEY } from "../utils/constants";
 
-const VITE_IMAGE_BASE_URL = import.meta.env.VITE_IMAGE_BASE_URL;
-
-function Reviews() {
-  const {
-    reviews: { results: reviews },
-    detail: { original_title, release_date, poster_path },
-  } = useLoaderData();
-
-  const posterPath = poster_path
-    ? `${VITE_IMAGE_BASE_URL}/${poster_path}`
-    : defaultImg;
-
+const Reviews = ({ id, type }) => {
+  const { [id]: dynamicId } = useParams();
+  let reviews = useReviews(type, dynamicId);
+  const item = useDetails(type, dynamicId);
+  let original_title, release_date;
+  let poster_path = item?.poster_path;
+  if (type === MOVIE_TYPE_KEY) {
+    original_title = item?.original_title;
+    release_date = item?.release_date;
+  } else {
+    original_title = item?.name;
+    release_date = item?.first_air_date;
+  }
   return (
-    <div className="ml-10 mr-10 mt-4 ">
-      <div className="text-4xl font-bold flex gap-4 items-center">
-        <img
-          className="w-20 h-20"
-          alt={`poster of ${original_title}`}
-          src={posterPath}
-        />
-        <div>
-          <div>{original_title}</div>
-          <div className="italic font-normal text-3xl">
-            {formatDate(release_date)}
-          </div>
-        </div>
-      </div>
+    <div className="mx-10  my-8 w-9/12">
+      <SmallTVCard
+        posterPath={poster_path}
+        name={original_title}
+        first_air_date={release_date}
+      />
       <div className="text-4xl font-bold mt-6">
         <h1>Reviews</h1>
       </div>
-      <div>
-        {reviews.map((review) => (
-          <ReviewCard key={review.id} review={review} />
-        ))}
-      </div>
+      {!reviews ? (
+        <ShimmerReviewsPage />
+      ) : (
+        <div>
+          {reviews?.map((review) => (
+            <ReviewCard key={review.id} review={review} />
+          ))}
+        </div>
+      )}
     </div>
   );
-}
+};
 
 export default Reviews;
-
-export async function loader({ params }) {
-  const { movieId } = params;
-  let result = {};
-  result["reviews"] = await fetchReviews("movie", movieId);
-  result["detail"] = await fetchDetail("movie", movieId);
-  return result;
-}

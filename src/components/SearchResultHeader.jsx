@@ -1,14 +1,15 @@
 import { useSearchParams } from "react-router-dom";
+import { DEFAULT_PAGE, PAGE_KEY } from "../utils/constants";
 
-function SearchResultHeader({ results, activeId, setActiveId }) {
+const SearchResultHeader = ({ results, activeId, setActiveId }) => {
   const [params, setParams] = useSearchParams();
-  function handleClick(e) {
+  const handleClick = (e) => {
     setActiveId(e.target.closest("li").id);
-    params.set("page", 1);
+    params.set(PAGE_KEY, DEFAULT_PAGE);
     setParams(params);
-  }
+  };
   return (
-    <div className="">
+    <div className="  w-11/12 ml-4 sm:w-auto ">
       <ul className="flex flex-col sm:flex-row rounded-3xl  bg-slate-200 sm:rounded-full p-[0.1rem]">
         {results.map((element) => {
           return (
@@ -17,7 +18,7 @@ function SearchResultHeader({ results, activeId, setActiveId }) {
               id={element.id}
               className={`${
                 activeId === element.id ? "bg-white" : "bg-transparent"
-              } p-2 pl-4 pr-4 rounded-full cursor-pointer flex gap-2 items-center`}
+              } p-2 pl-4 pr-4 rounded-full cursor-pointer flex gap-2 items-center justify-center`}
               onClick={handleClick}
             >
               <div>{element.title}</div>
@@ -30,6 +31,6 @@ function SearchResultHeader({ results, activeId, setActiveId }) {
       </ul>
     </div>
   );
-}
+};
 
 export default SearchResultHeader;

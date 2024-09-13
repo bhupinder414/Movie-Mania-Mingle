@@ -1,18 +1,21 @@
 import { Link } from "react-router-dom";
-import defaultImg from "./../assets/default-movie.webp";
 import Card from "./Card";
-import { formatDate } from "../helpers/formatFunctions";
+import { formatDate } from "../utils/formatFunctions";
+import Image from "./Image";
+import { SHOW_TYPE_KEY } from "../utils/constants";
 
-const VITE_IMAGE_BASE_URL = import.meta.env.VITE_IMAGE_BASE_URL;
-
-function TVShowCard({ show: { poster_path, name, first_air_date, id } }) {
-  let posterImage = poster_path
-    ? `${VITE_IMAGE_BASE_URL}/${poster_path}`
-    : defaultImg;
+const TVShowCard = ({ show: { poster_path, name, first_air_date, id } }) => {
   return (
     <Card>
       <Link to={`/tv/${id}`}>
-        <img className="rounded-xl min-h-[86%] min-w-full" src={posterImage} />
+        <div className="h-[23rem] min-w-full  rounded-xl bg-gray-100">
+          <Image
+            type={SHOW_TYPE_KEY}
+            path={poster_path}
+            className=" w-full h-full rounded-xl object-fill"
+            alt={`image of ${name}`}
+          />
+        </div>
         <div className="text-center text-xl font-bold mt-2">{name}</div>
         <div className="text-center text-xl text-slate-400">
           {formatDate(first_air_date)}
@@ -20,6 +23,6 @@ function TVShowCard({ show: { poster_path, name, first_air_date, id } }) {
       </Link>
     </Card>
   );
-}
+};
 
 export default TVShowCard;

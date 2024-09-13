@@ -1,18 +1,21 @@
 import Card from "./Card";
-import { formatDate } from "../helpers/formatFunctions";
-import defaultImg from "./../assets/default-movie.webp";
+import { formatDate } from "../utils/formatFunctions";
 import { Link } from "react-router-dom";
+import { MOVIE_TYPE_KEY } from "../utils/constants";
+import Image from "./Image";
 
-const VITE_IMAGE_BASE_URL = import.meta.env.VITE_IMAGE_BASE_URL;
-
-function TrendingCard({ movie: { poster_path, title, release_date, id } }) {
-  let posterImage = poster_path
-    ? `${VITE_IMAGE_BASE_URL}/${poster_path}`
-    : defaultImg;
+const TrendingCard = ({ movie: { poster_path, title, release_date, id } }) => {
   return (
     <Card>
       <Link to={`/movies/${id}`}>
-        <img className="rounded-xl min-h-[86%] min-w-full" src={posterImage} />
+        <div className="h-[23rem] min-w-full  rounded-xl bg-gray-100">
+          <Image
+            type={MOVIE_TYPE_KEY}
+            path={poster_path}
+            className=" w-full h-full rounded-xl object-fill"
+            alt={`image of ${title}`}
+          />
+        </div>
         <div className="text-center text-xl font-bold mt-2">{title}</div>
         <div className="text-center text-xl text-slate-400">
           {formatDate(release_date)}
@@ -20,6 +23,6 @@ function TrendingCard({ movie: { poster_path, title, release_date, id } }) {
       </Link>
     </Card>
   );
-}
+};
 
 export default TrendingCard;

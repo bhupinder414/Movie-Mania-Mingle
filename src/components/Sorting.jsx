@@ -1,12 +1,13 @@
 import { useSearchParams } from "react-router-dom";
+import { SORT_BY_KEY } from "../utils/constants";
 
-function Sorting({ options, selectedValue }) {
+const Sorting = ({ options, selectedValue }) => {
   const [params, setParams] = useSearchParams();
 
-  function handleSortBy(e) {
-    params.set("sort_by", e.target.value);
+  const handleSortBy = (e) => {
+    params.set(SORT_BY_KEY, e.target.value);
     setParams(params);
-  }
+  };
 
   return (
     <div className=" border p-4 rounded-xl border-slate-200 ">
@@ -14,7 +15,7 @@ function Sorting({ options, selectedValue }) {
       <div className="w-full">
         <select
           className="w-full border border-slate-300 focus:border-gray-400  p-2 rounded-lg"
-          name="sort_by"
+          name={SORT_BY_KEY}
           value={selectedValue}
           onChange={handleSortBy}
         >
@@ -27,6 +28,6 @@ function Sorting({ options, selectedValue }) {
       </div>
     </div>
   );
-}
+};
 
 export default Sorting;

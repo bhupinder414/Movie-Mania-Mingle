@@ -1,5 +1,5 @@
 import { FaCopyright } from "react-icons/fa6";
-function Footer() {
+const Footer = () => {
   return (
     <footer className="bg-darkblue p-3  text-white">
       <div className="text-center flex flex-col sm:flex-row items-center justify-center gap-1 text-xl">
@@ -13,6 +13,6 @@ function Footer() {
       </div>
     </footer>
   );
-}
+};
 
 export default Footer;

@@ -1,4 +1,4 @@
-function LoaderFullScreen() {
+const LoaderFullScreen = () => {
   return (
     <div className="flex space-x-2 justify-center items-center bg-slate-100  h-screen dark:invert">
       <span className="sr-only">Loading...</span>
@@ -7,6 +7,6 @@ function LoaderFullScreen() {
       <div className="h-8 w-8 bg-slate-500  rounded-full animate-bounce"></div>
     </div>
   );
-}
+};
 
 export default LoaderFullScreen;

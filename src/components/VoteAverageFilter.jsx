@@ -1,10 +1,11 @@
 import { useSearchParams } from "react-router-dom";
+import { DEFAULT_PAGE, PAGE_KEY } from "../utils/constants";
 
-function VoteAverageFilter({ name, min, max, step, placeholder }) {
+const VoteAverageFilter = ({ name, min, max, step, placeholder }) => {
   const [params, setParams] = useSearchParams();
   const val = params.get(name) || "";
 
-  function handleChange(e) {
+  const handleChange = (e) => {
     let value = parseFloat(e.target.value.trim());
     if (isNaN(value)) {
       params.delete(name);
@@ -17,12 +18,10 @@ function VoteAverageFilter({ name, min, max, step, placeholder }) {
     } else if (value > 10) {
       value = 10;
     }
-    value = value.toFixed(2);
     params.set(name, value);
-    params.set("page", 1);
-
+    params.set(PAGE_KEY, DEFAULT_PAGE);
     setParams(params);
-  }
+  };
 
   return (
     <div className="w-full mb-4 flex  gap-2 items-center">
@@ -39,6 +38,6 @@ function VoteAverageFilter({ name, min, max, step, placeholder }) {
       />
     </div>
   );
-}
+};
 
 export default VoteAverageFilter;
